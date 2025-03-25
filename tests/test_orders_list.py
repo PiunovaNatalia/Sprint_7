@@ -1,11 +1,11 @@
+import allure
+import pytest
+import requests
 
 from data import Data, StatusCode, Api
-import allure
-from base_test import BaseTest
-import pytest
 
 
-class TestOrdersListing(BaseTest):
+class TestOrdersListing:
     @pytest.mark.parametrize('order_page_params', Data.ORDER_PAGE_PARAMS)
     @allure.title('Тестирование вывода списка заказов')
     @allure.description(
@@ -16,7 +16,7 @@ class TestOrdersListing(BaseTest):
         page = order_page_params["page"]
 
         url = f"{Api.ORDERS_LIST}?limit={limit}&page={page}"
-        response = self.get_request(url)
+        response = requests.get(url)
 
         assert (
             response.status_code == StatusCode.OK_200
