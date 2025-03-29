@@ -1,2 +1,7 @@
 .venv/
 .idea/
+*.log
+.pytest_cache/
+__pycache__/
+**/__pycache__/
+allure_results/
